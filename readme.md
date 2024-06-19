@@ -19,7 +19,6 @@ To install the repository, please clone this repository and install the requirem
 pip install -r requirements.txt
 ```
 
-You will also need to add your OpenAI API key to the `.env` file.
 
 ## Usage
 
