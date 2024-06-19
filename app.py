@@ -42,7 +42,7 @@ def main():
             
             # Using g4f.client for LLM
             client = Client()
-            messages = [{"role": "system", "content": "You are a helpful assistant."}]
+            messages = [{"role": "system", "content": "You are a question answer assistant based on content."}]
             for doc in docs:
                 messages.append({"role": "user", "content": doc.page_content})
             messages.append({"role": "user", "content": user_question})
