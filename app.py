@@ -5,7 +5,10 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-from g4f.client import Client  # Importing Client from g4f.client
+import g4f
+
+g4f.debug.logging = False # enable logging
+g4f.check_version = False # Disable automatic version checking
 
 def main():
     load_dotenv()
@@ -47,13 +50,13 @@ def main():
                 messages.append({"role": "user", "content": doc.page_content})
             messages.append({"role": "user", "content": user_question})
 
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+            response = g4f.ChatCompletion.create(
+                model=g4f.models.gpt_4,
                 messages=messages
             )
-            response_text = response.choices[0].message['content']
+            
                
-            st.write(response_text)
+            st.write(response)
 
 if __name__ == '__main__':
     main()
